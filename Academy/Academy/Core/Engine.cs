@@ -21,7 +21,7 @@ namespace Academy.Core
         private readonly ICommandFactory commandFactory;
 
 
-        public Engine(IReader reader, IWriter writer, IParser parser,CommandFactory commandFactory)
+        public Engine(IReader reader, IWriter writer, IParser parser,ICommandFactory commandFactory)
         {
 
             this.reader = reader ?? throw new ArgumentNullException("reader went wrong! cant be null!");

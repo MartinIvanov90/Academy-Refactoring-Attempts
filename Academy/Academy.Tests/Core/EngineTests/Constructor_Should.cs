@@ -18,9 +18,9 @@ namespace Academy.Tests.Core.EngineTests
             //Arrange & Act
             Mock<IWriter> writerMock = new Mock<IWriter>();
             Mock<IParser> parserMock = new Mock<IParser>();
-            Mock<IDatabase> dbMock = new Mock<IDatabase>();
+            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(null, writerMock.Object, parserMock.Object,dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(null, writerMock.Object, parserMock.Object,commandFactoryMock.Object);
         }
         [TestMethod]
         //Assert
@@ -30,9 +30,9 @@ namespace Academy.Tests.Core.EngineTests
             //Arrange & Act
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IParser> parserMock = new Mock<IParser>();
-            Mock<IDatabase> dbMock = new Mock<IDatabase>();
+            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(readerMock.Object, null, parserMock.Object, dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, null, parserMock.Object,  commandFactoryMock.Object);
         }
         [TestMethod]
         //Assert
@@ -42,9 +42,9 @@ namespace Academy.Tests.Core.EngineTests
             //Arrange & Act
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IWriter> writerMock = new Mock<IWriter>();
-            Mock<IDatabase> dbMock = new Mock<IDatabase>();
+            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(readerMock.Object, writerMock.Object, null, dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock.Object, null, commandFactoryMock.Object);
         }
     }
 }

@@ -22,13 +22,13 @@ namespace Academy.Tests.Core.EngineTests
             //Arrange
             Mock<IParser> parserMock = new Mock<IParser>();
             Mock<IReader> readerMock = new Mock<IReader>();
-            Mock<IDatabase> dbMock = new Mock<IDatabase>();
+            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
             readerMock.SetupSequence(x => x.ReadLine()).Returns("").Returns("Exit");
 
             MockWriter writerMock = new MockWriter();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object, dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object, commandFactoryMock.Object);
 
             //Act
             engine.Start();
@@ -63,7 +63,7 @@ namespace Academy.Tests.Core.EngineTests
 
             MockWriter writerMock = new MockWriter();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object, dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object,commandFactoryMock.Object);
             
             //Act
             engine.Start();
@@ -99,7 +99,7 @@ namespace Academy.Tests.Core.EngineTests
 
             Mock<IWriter> writerMock = new Mock<IWriter>();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock.Object, parserMock.Object, dbMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock.Object, parserMock.Object, commandFactoryMock.Object);
 
             //Act
             engine.Start();
