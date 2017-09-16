@@ -7,12 +7,12 @@ namespace Academy.Commands.Creating
     public class CreateSeasonCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDatabase db;
 
-        public CreateSeasonCommand(IAcademyFactory factory, IEngine engine)
+        public CreateSeasonCommand(IAcademyFactory factory, IDatabase db)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.db = db;
         }
 
         public string Execute(IList<string> parameters)
@@ -22,9 +22,9 @@ namespace Academy.Commands.Creating
             var initiative = parameters[2];
 
             var season = this.factory.CreateSeason(startingYear, endingYear, initiative);
-            this.engine.Seasons.Add(season);
+            this.db.Seasons.Add(season);
 
-            return $"Season with ID {this.engine.Seasons.Count - 1} was created.";
+            return $"Season with ID {this.db.Seasons.Count - 1} was created.";
         }
     }
 }

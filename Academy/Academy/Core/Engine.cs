@@ -18,30 +18,19 @@ namespace Academy.Core
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly IParser parser;
-        private readonly IDatabase db;
         private readonly ICommandFactory commandFactory;
 
 
-        public Engine(IReader reader, IWriter writer, IParser parser,IDatabase db, ICommandFactory commandFactory)
+        public Engine(IReader reader, IWriter writer, IParser parser,CommandFactory commandFactory)
         {
 
             this.reader = reader ?? throw new ArgumentNullException("reader went wrong! cant be null!");
             this.writer = writer ?? throw new ArgumentNullException("writer went wrong! cant be null!");
             this.parser = parser ?? throw new ArgumentNullException("parser went wrong! cant be null!");
-            this.db = db ?? throw new ArgumentNullException("db went wrong! cant be null!");
             this.commandFactory = commandFactory ?? throw new ArgumentNullException("command factory went wrong! cant be null!");
 
-            this.Seasons = db.Seasons;
-            this.Students = db.Students;
-            this.Trainers = db.Trainers;
         }
 
-
-        public IList<ISeason> Seasons { get; private set; }
-
-        public IList<IStudent> Students { get; private set; }
-
-        public IList<ITrainer> Trainers { get; private set; }
 
 
         public void Start()

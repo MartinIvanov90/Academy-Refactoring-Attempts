@@ -10,12 +10,12 @@ namespace Academy.Commands.Listing
     public class ListUsersInSeasonCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDatabase db;
 
-        public ListUsersInSeasonCommand(IAcademyFactory factory, IEngine engine)
+        public ListUsersInSeasonCommand(IAcademyFactory factory, IDatabase db)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.db = db;
         }
 
         public string Execute(IList<string> parameters)
@@ -25,7 +25,7 @@ namespace Academy.Commands.Listing
                 throw new ArgumentOutOfRangeException("you have to pick a season");
             }
             var seasonId = parameters[0];
-            var season = this.engine.Seasons[int.Parse(seasonId)];
+            var season = this.db.Seasons[int.Parse(seasonId)];
 
             return season.ListUsers();
         }

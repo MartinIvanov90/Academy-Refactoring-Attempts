@@ -9,12 +9,12 @@ namespace Academy.Commands.Adding
     public class AddStudentToSeasonCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDatabase db;
 
-        public AddStudentToSeasonCommand(IAcademyFactory factory, IEngine engine)
+        public AddStudentToSeasonCommand(IAcademyFactory factory, IDatabase db)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.db = db;
         }
 
         public string Execute(IList<string> parameters)
@@ -22,8 +22,8 @@ namespace Academy.Commands.Adding
             var studentUsername = parameters[0];
             var seasonId = parameters[1];
 
-            var student = this.engine.Students.Single(x => x.Username.ToLower() == studentUsername.ToLower());
-            var season = this.engine.Seasons[int.Parse(seasonId)];
+            var student = this.db.Students.Single(x => x.Username.ToLower() == studentUsername.ToLower());
+            var season = this.db.Seasons[int.Parse(seasonId)];
 
             if (season.Students.Any(x => x.Username.ToLower() == studentUsername.ToLower()))
             {
