@@ -10,41 +10,34 @@ namespace Academy.Tests.Core.EngineTests
     [TestClass]
     public class Constructor_Should
     {
+  
         [TestMethod]
-        //Assert
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowException_WhenNullReaderIsGiven()
         {
-            //Arrange & Act
+            //Arrange
             Mock<IWriter> writerMock = new Mock<IWriter>();
             Mock<IParser> parserMock = new Mock<IParser>();
-            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(null, writerMock.Object, parserMock.Object,commandFactoryMock.Object);
+            //Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new Engine(null, writerMock.Object, parserMock.Object));
+
         }
         [TestMethod]
-        //Assert
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowException_WhenNullWriterIsGiven()
         {
-            //Arrange & Act
+            //Arrange
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IParser> parserMock = new Mock<IParser>();
-            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(readerMock.Object, null, parserMock.Object,  commandFactoryMock.Object);
+            //Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new Engine(readerMock.Object, null,  parserMock.Object));
         }
         [TestMethod]
-        //Assert
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowException_WhenNullParserIsGiven()
         {
-            //Arrange & Act
+            //Arrange
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IWriter> writerMock = new Mock<IWriter>();
-            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
-            IEngine engine = new Engine(readerMock.Object, writerMock.Object, null, commandFactoryMock.Object);
+            //Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new Engine(readerMock.Object, writerMock.Object, null));
         }
     }
 }

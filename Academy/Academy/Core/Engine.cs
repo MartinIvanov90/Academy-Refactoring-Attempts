@@ -18,17 +18,14 @@ namespace Academy.Core
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly IParser parser;
-        private readonly ICommandFactory commandFactory;
 
 
-        public Engine(IReader reader, IWriter writer, IParser parser,ICommandFactory commandFactory)
+        public Engine(IReader reader, IWriter writer, IParser parser)
         {
 
             this.reader = reader ?? throw new ArgumentNullException("reader went wrong! cant be null!");
             this.writer = writer ?? throw new ArgumentNullException("writer went wrong! cant be null!");
             this.parser = parser ?? throw new ArgumentNullException("parser went wrong! cant be null!");
-            this.commandFactory = commandFactory ?? throw new ArgumentNullException("command factory went wrong! cant be null!");
-
         }
 
 

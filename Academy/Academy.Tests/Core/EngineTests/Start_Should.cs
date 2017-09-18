@@ -22,13 +22,11 @@ namespace Academy.Tests.Core.EngineTests
             //Arrange
             Mock<IParser> parserMock = new Mock<IParser>();
             Mock<IReader> readerMock = new Mock<IReader>();
-            //Mock<IDatabase> dbMock = new Mock<IDatabase>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
             readerMock.SetupSequence(x => x.ReadLine()).Returns("").Returns("Exit");
 
             MockWriter writerMock = new MockWriter();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object);
 
             //Act
             engine.Start();
@@ -49,7 +47,6 @@ namespace Academy.Tests.Core.EngineTests
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommand> commandToExecute = new Mock<ICommand>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
             seasonList.Add(season);
 
             commandToExecute.Setup(x => x.Execute(It.IsAny<IList<string>>())).Returns("Student with ID 0 was created");
@@ -63,7 +60,7 @@ namespace Academy.Tests.Core.EngineTests
 
             MockWriter writerMock = new MockWriter();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object,commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock, parserMock.Object);
             
             //Act
             engine.Start();
@@ -85,7 +82,6 @@ namespace Academy.Tests.Core.EngineTests
             Mock<IReader> readerMock = new Mock<IReader>();
             Mock<IDatabase> dbMock = new Mock<IDatabase>();
             Mock<ICommand> commandToExecute = new Mock<ICommand>();
-            Mock<ICommandFactory> commandFactoryMock = new Mock<ICommandFactory>();
             seasonList.Add(season);
 
             commandToExecute.Setup(x => x.Execute(It.IsAny<IList<string>>())).Returns("Student with ID 0 was created");
@@ -99,7 +95,7 @@ namespace Academy.Tests.Core.EngineTests
 
             Mock<IWriter> writerMock = new Mock<IWriter>();
 
-            IEngine engine = new Engine(readerMock.Object, writerMock.Object, parserMock.Object, commandFactoryMock.Object);
+            IEngine engine = new Engine(readerMock.Object, writerMock.Object, parserMock.Object);
 
             //Act
             engine.Start();
